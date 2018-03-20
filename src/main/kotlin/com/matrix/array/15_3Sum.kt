@@ -1,6 +1,5 @@
 package com.matrix.array
 
-import java.util.*
 
 /**
  * leetcodeKotlin.
@@ -31,8 +30,8 @@ import java.util.*
  * 2.当遍历的nums[i]大于0的时候，很明显后面的数字已经不会有结果了，直接break
  */
 fun threeSum(nums: IntArray): List<List<Int>> {
-    Arrays.sort(nums)
-    val res = LinkedList<List<Int>>()
+    nums.sort()
+    val res = arrayListOf<List<Int>>()
     for (i in 0 until nums.size - 2) {
         //优化点2. 跳过nums[i]>0的数字
         if (nums[i] > 0) break
@@ -46,7 +45,7 @@ fun threeSum(nums: IntArray): List<List<Int>> {
                 when {
                     nums[lo] + nums[hi] == sum -> {
                         //如果寻找到则 将答案存入集合中，跳过相同的数字，寻找下一组数字
-                        res.add(Arrays.asList(nums[i], nums[lo], nums[hi]))
+                        res.add(arrayListOf(nums[i], nums[lo], nums[hi]))
                         while (lo < hi && nums[lo] == nums[lo + 1]) lo++
                         while (lo < hi && nums[hi] == nums[hi - 1]) hi--
                         lo++
