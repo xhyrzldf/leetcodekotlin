@@ -10,13 +10,11 @@ package com.matrix.sort
 /**
  * 核心思想 list(<x) + list(==x) + list(>X)
  */
-fun quickSort(list: List<Int>): List<Int> {
-    return when (list.isEmpty()) {
-        true -> emptyList()
-        else -> quickSort(list.filter { it < list.first() }) +
-                list.filter { it == list.first() } +
-                quickSort(list.filter { it > list.first() })
-    }
+fun quickSort(list: List<Int>): List<Int> = when (list.isEmpty()) {
+    true -> emptyList()
+    else -> quickSort(list.filter { it < list.first() }) +
+            list.filter { it == list.first() } +
+            quickSort(list.filter { it > list.first() })
 }
 
 fun main(args: Array<String>) {
